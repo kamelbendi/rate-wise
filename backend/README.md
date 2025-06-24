@@ -47,4 +47,4 @@
   "exchange_rate": 1.5,
   "effective_date": "2024-03-31"
 }
-``` 
+```
