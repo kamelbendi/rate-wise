@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .App-logo {
@@ -35,4 +38,101 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Table styles */
+.table-container {
+  display: flex;
+  justify-content: center;
+  flex: 1 1 auto;
+  margin-top: 20px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+.rates-table {
+  border-collapse: collapse;
+  width: 90%;
+  max-width: 900px;
+  background: #fff;
+  color: #222;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  height: 100%;
+  table-layout: fixed;
+}
+.rates-table th, .rates-table td {
+  border: 1px solid #e0e0e0;
+  padding: 8px 12px;
+  text-align: left;
+}
+.rates-table th {
+  background: #f5f5f5;
+  font-weight: 600;
+}
+.rates-table tr:nth-child(even) {
+  background: #fafbfc;
+}
+.rates-table thead th {
+  position: sticky;
+  top: 0;
+  background: #f5f5f5;
+  z-index: 2;
+}
+.rates-table tbody {
+  display: block;
+  height: calc(100vh - 220px); /* Adjust 220px to fit your header/filter height */
+  max-height: calc(100vh - 220px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+}
+.rates-table thead, .rates-table tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+/* Multi-select styles */
+.multi-select {
+  position: relative;
+  display: inline-block;
+  min-width: 260px;
+  font-size: 16px;
+}
+.multi-select-input {
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  padding: 8px 12px;
+  background: #fff;
+  cursor: pointer;
+  min-height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.multi-select-input .arrow {
+  margin-left: 8px;
+  font-size: 12px;
+}
+.multi-select-dropdown {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  z-index: 10;
+  max-height: 220px;
+  overflow-y: auto;
+}
+.multi-select-option {
+  padding: 8px 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.multi-select-option:hover {
+  background: #f0f4fa;
 }
