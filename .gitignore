@@ -10,6 +10,7 @@ frontend/coverage
 
 # production
 frontend/build
+backend/conversions.db
 
 # misc
 frontend/.DS_Store
