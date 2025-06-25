@@ -1,4 +1,5 @@
 # Rate Wise
+App Link: https://rate-wise-one.vercel.app
 
 ## Backend (Python FastAPI/Django)
 
@@ -68,7 +69,7 @@
    yarn start
    ```
 
-The frontend will be available at http://localhost:3000 and the backend at http://localhost:8000 (FastAPI) or http://localhost:8000 (Django).
+The frontend will be available by default at http://localhost:3000 and the backend at http://localhost:8000 (FastAPI/Django).
 
 ---
 
