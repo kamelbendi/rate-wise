@@ -29,7 +29,7 @@ const MultiSelect = ({ options, selected, onChange, countryToFlag }) => (
         id="multi-select-input"
       />
     )}
-    sx={{ minWidth: 260, maxWidth: 400 }}
+    sx={{ minWidth: 260 }}
   />
 );
 

@@ -5,7 +5,7 @@ import RatesTable from './components/RatesTable';
 import countryToFlag from './utils/countryToFlag';
 import Header from './components/Header';
 
-const API_URL = 'http://localhost:8000/api/conversions';
+const API_URL = 'https://rate-wise.onrender.com/api/conversions';
 
 function App() {
   const [data, setData] = useState([]);
