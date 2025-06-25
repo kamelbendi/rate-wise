@@ -11,6 +11,10 @@ import {
   Box,
   Typography,
   IconButton,
+  Pagination,
+  FormControl,
+  Select,
+  MenuItem,
 } from '@mui/material';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import RefreshIcon from '@mui/icons-material/Refresh';
@@ -38,6 +42,9 @@ const RatesTable = ({
   sortDirection,
   onSort,
   multiSelectProps,
+  pagination,
+  onPageChange,
+  onPageSizeChange,
 }) => (
   <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%', overflow: 'hidden' }}>
     {/* Custom Header */}
@@ -48,7 +55,7 @@ const RatesTable = ({
           USD Exchange Rates
         </Typography>
         <Typography variant="h6" sx={{ color: black, fontWeight: 600, fontSize: 18, ml: 1, fontFamily }}>
-          {data.length} rates
+          {pagination.totalCount} rates
         </Typography>
       </Box>
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
@@ -76,8 +83,8 @@ const RatesTable = ({
     )}
     
     {/* Table - Takes remaining space */}
-    <Box sx={{ flex: 1, minHeight: 0, overflow: 'hidden' }}>
-      <TableContainer component={Paper} sx={{ height: '100%', overflow: 'auto' }}>
+    <Box sx={{ flex: 1, minHeight: 0, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+      <TableContainer component={Paper} sx={{ flex: 1, overflow: 'auto' }}>
         <Table stickyHeader size="small" sx={{ fontFamily }}>
           <TableHead>
             <TableRow>
@@ -176,6 +183,62 @@ const RatesTable = ({
         {/* Google Fonts link for Montserrat */}
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet" />
       </TableContainer>
+      
+      {/* Pagination Controls - Bottom Right */}
+      <Box sx={{ 
+        display: 'flex', 
+        justifyContent: 'flex-end', 
+        alignItems: 'center', 
+        gap: 2, 
+        p: 2, 
+        borderTop: '1px solid #e0e0e0',
+        bgcolor: '#fafafa',
+        flexShrink: 0
+      }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+          <Typography variant="body2" sx={{ fontFamily, color: black }}>
+            Rows per page:
+          </Typography>
+          <FormControl size="small" sx={{ minWidth: 80 }}>
+            <Select
+              value={pagination.pageSize}
+              onChange={(e) => onPageSizeChange(e.target.value)}
+              sx={{ fontFamily }}
+            >
+              <MenuItem value={10}>10</MenuItem>
+              <MenuItem value={25}>25</MenuItem>
+              <MenuItem value={50}>50</MenuItem>
+              <MenuItem value={100}>100</MenuItem>
+            </Select>
+          </FormControl>
+        </Box>
+        
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+          <Typography variant="body2" sx={{ fontFamily, color: black }}>
+            {((pagination.currentPage - 1) * pagination.pageSize) + 1}-
+            {Math.min(pagination.currentPage * pagination.pageSize, pagination.totalCount)} of {pagination.totalCount}
+          </Typography>
+        </Box>
+        
+        <Pagination
+          count={pagination.totalPages}
+          page={pagination.currentPage}
+          onChange={(_, page) => onPageChange(page)}
+          size="small"
+          showFirstButton
+          showLastButton
+          sx={{
+            '& .MuiPaginationItem-root': {
+              fontFamily,
+              color: black,
+            },
+            '& .Mui-selected': {
+              bgcolor: '#1e293b',
+              color: 'white',
+            }
+          }}
+        />
+      </Box>
     </Box>
   </Box>
 );
